@@ -39,7 +39,7 @@ class Server(models.Model):
     def update_info(self):
         a2s = valve.source.a2s.ServerQuerier((self.host, self.port))
         try:
-            info = a2s.get_info()
+            info = a2s.info()
             self.up = True
             self.save()
         except valve.source.a2s.NoResponseError:
@@ -66,7 +66,7 @@ class Server(models.Model):
     def update_players(self):
         a2s = valve.source.a2s.ServerQuerier((self.host, self.port))
         try:
-            players = a2s.get_players()
+            players = a2s.players()
             self.up = True
             self.save()
         except valve.source.a2s.NoResponseError:
@@ -89,7 +89,7 @@ class Server(models.Model):
     def update_rules(self):
         a2s = valve.source.a2s.ServerQuerier((self.host, self.port))
         try:
-            rules = a2s.get_rules()
+            rules = a2s.rules()
             self.up = True
             self.save()
         except valve.source.a2s.NoResponseError:
